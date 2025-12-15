@@ -26,6 +26,19 @@ class LinkedList {
       this.head.nextNode = copyNode;
     }
   }
+
+  size() {
+    let amount = 0;
+    if (this.head != null) {
+      amount++;
+      let nextOne = this.head;
+      while (nextOne.nextNode != null) {
+        amount++;
+        nextOne = nextOne.nextNode;
+      }
+    }
+    return amount;
+  }
 }
 
 class Node {
@@ -37,7 +50,7 @@ class Node {
 
 const myList = new LinkedList();
 
-console.log(myList);
+// console.log(myList);
 
 myList.append("Anode");
 myList.append("Bnode");
@@ -46,3 +59,5 @@ myList.append("Dnode");
 myList.prepend("Pnode");
 
 console.log(myList);
+
+console.log(myList.size());
