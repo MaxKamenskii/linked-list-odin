@@ -39,6 +39,16 @@ class LinkedList {
     }
     return amount;
   }
+
+  tail() {
+    if (this.head != null) {
+      let myNode = this.head;
+      while (myNode.nextNode != null) {
+        myNode = myNode.nextNode;
+      }
+      return myNode;
+    } else return "No nodes in the list";
+  }
 }
 
 class Node {
@@ -61,3 +71,4 @@ myList.prepend("Pnode");
 console.log(myList);
 
 console.log(myList.size());
+console.log(myList.tail());
