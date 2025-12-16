@@ -75,6 +75,23 @@ class LinkedList {
       nodeBefore.nextNode = null;
     } else return "No nodes in the list";
   }
+
+  contains(value) {
+    if (this.head != null) {
+      let nodeCompare = this.head;
+      if (nodeCompare.value == value) {
+        return true;
+      } else {
+        while (nodeCompare.nextNode != null) {
+          nodeCompare = nodeCompare.nextNode;
+          if (nodeCompare.value == value) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+  }
 }
 
 class Node {
@@ -101,3 +118,4 @@ console.log(myList.tail());
 console.log(myList.pop());
 console.log(myList.tail());
 console.log(myList.size());
+console.log(myList.contains("Cnode"));
