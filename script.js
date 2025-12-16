@@ -49,6 +49,32 @@ class LinkedList {
       return myNode;
     } else return "No nodes in the list";
   }
+
+  at(index) {
+    if (this.head != null) {
+      let currentIndex = 0;
+      let currentNode = this.head;
+      while (currentIndex != index && currentNode.nextNode != null) {
+        currentIndex++;
+        currentNode = currentNode.nextNode;
+      }
+      return currentNode;
+    } else {
+      return "No node at this index";
+    }
+  }
+  pop() {
+    if (this.head != null) {
+      let index = 0;
+      let myNode = this.head;
+      while (myNode.nextNode != null) {
+        myNode = myNode.nextNode;
+        index++;
+      }
+      let nodeBefore = this.at(index - 1);
+      nodeBefore.nextNode = null;
+    } else return "No nodes in the list";
+  }
 }
 
 class Node {
@@ -72,3 +98,6 @@ console.log(myList);
 
 console.log(myList.size());
 console.log(myList.tail());
+console.log(myList.pop());
+console.log(myList.tail());
+console.log(myList.size());
