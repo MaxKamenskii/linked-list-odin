@@ -60,9 +60,12 @@ class LinkedList {
         currentIndex++;
         currentNode = currentNode.nextNode;
       }
-      return currentNode;
-    } else {
-      return "No node at this index";
+      if (index == currentIndex) {
+        return currentNode;
+      }
+      {
+        return null;
+      }
     }
   }
   pop() {
@@ -73,8 +76,12 @@ class LinkedList {
         myNode = myNode.nextNode;
         index++;
       }
-      let nodeBefore = this.at(index - 1);
-      nodeBefore.nextNode = null;
+      if (myNode == this.head) {
+        this.head = null;
+      } else {
+        let nodeBefore = this.at(index - 1);
+        nodeBefore.nextNode = null;
+      }
     } else return "No nodes in the list";
   }
 
@@ -148,5 +155,8 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-
+console.log(list);
+console.log(list.at(6));
+list.pop();
+console.log(list);
 console.log(list.toString());
