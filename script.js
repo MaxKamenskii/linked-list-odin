@@ -24,6 +24,8 @@ class LinkedList {
       let copyNode = this.head;
       this.head = newNode;
       this.head.nextNode = copyNode;
+    } else {
+      this.head = newNode;
     }
   }
 
@@ -92,6 +94,43 @@ class LinkedList {
       return false;
     }
   }
+
+  find(value) {
+    if (this.head != null) {
+      let nodeCompare = this.head;
+      let index = 0;
+      if (nodeCompare.value == value) {
+        return index;
+      } else {
+        while (nodeCompare.nextNode != null) {
+          nodeCompare = nodeCompare.nextNode;
+          index++;
+          if (nodeCompare.value == value) {
+            return index;
+          }
+        }
+      }
+      return null;
+    }
+  }
+
+  toString() {
+    let wholeString;
+    let nodeString;
+    let node;
+    if (this.head != null) {
+      node = this.head;
+      nodeString = this.head.value.toString();
+      wholeString = "( " + nodeString + " )";
+      while (node.nextNode != null) {
+        node = node.nextNode;
+        nodeString = node.value.toString();
+        wholeString = wholeString + " -> ( " + nodeString + " )";
+      }
+      wholeString = wholeString + " -> null";
+    }
+    return wholeString;
+  }
 }
 
 class Node {
@@ -101,21 +140,13 @@ class Node {
   }
 }
 
-const myList = new LinkedList();
+const list = new LinkedList();
 
-// console.log(myList);
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
-myList.append("Anode");
-myList.append("Bnode");
-myList.append("Cnode");
-myList.append("Dnode");
-myList.prepend("Pnode");
-
-console.log(myList);
-
-console.log(myList.size());
-console.log(myList.tail());
-console.log(myList.pop());
-console.log(myList.tail());
-console.log(myList.size());
-console.log(myList.contains("Cnode"));
+console.log(list.toString());
